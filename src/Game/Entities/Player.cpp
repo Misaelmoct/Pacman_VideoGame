@@ -72,6 +72,11 @@ void Player::render(){
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
     }
+
+    // Displays the score on screen throughout the game
+    if(this->score >= 0){
+        ofDrawBitmapString("Score = " + to_string(this->score), 300 , 50);
+    }
 }
 
 void Player::keyPressed(int key){
@@ -133,6 +138,18 @@ void Player::checkCollisions(){
         if(collides(entity)){
             if(dynamic_cast<Dot*>(entity) || dynamic_cast<BigDot*>(entity)){
                 entity->remove = true;
+            }
+        }
+    }
+
+    // Raises the score when Pacman eats a dot
+    for(Entity* entity:em->entities){
+        if(collides(entity)){
+            if(dynamic_cast<Dot*>(entity)){
+                this->score = this->score + 10;
+            }
+            else if(dynamic_cast<BigDot*>(entity)){
+                this->score = this->score + 50;
             }
         }
     }
