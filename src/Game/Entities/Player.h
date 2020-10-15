@@ -14,7 +14,7 @@ class Player: public Entity{
 
     private:
         int health;
-        int score;
+        int score = 0;
         bool canMove;
         int speed = 8;
         bool walking = false;
