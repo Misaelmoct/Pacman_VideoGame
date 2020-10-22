@@ -13,7 +13,7 @@ enum FACING {
 class Player: public Entity{
 
     private:
-        int health;
+        int health = 3;
         int score = 0;
         bool canMove;
         int speed = 8;
@@ -39,4 +39,8 @@ class Player: public Entity{
         void reset();
         void setFacing(FACING facing);
         void checkCollisions();
+
+        void die();
+        int xSpawnPosition = Entity::x;
+        int ySpawnPosition = Entity::y;
 };

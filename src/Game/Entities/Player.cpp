@@ -61,7 +61,6 @@ void Player::tick(){
 
 void Player::render(){
     ofSetColor(256,256,256);
-    // ofDrawRectangle(getBounds());
     if(facing == UP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
         
@@ -76,6 +75,11 @@ void Player::render(){
     // Displays the score on screen throughout the game
     if(this->score >= 0){
         ofDrawBitmapString("Score = " + to_string(this->score), 300 , 50);
+    }
+
+    // Displays the lives Pacman has on screen throughout the game
+    if(this->health <= 3){
+        ofDrawBitmapString("Lives = " + to_string(this->health), 650 , 50);
     }
 }
 
@@ -92,6 +96,18 @@ void Player::keyPressed(int key){
             break;
         case 'd':
             setFacing(RIGHT);
+            break;
+        // Decreases Pacman's lives by 1
+        case 'n':
+            if (this->health > 0){
+                this->die();
+            }
+            break;
+        // Increases Pacman's lives by 1
+        case 'm':
+            if (this->health < 3){
+                this->health = this->health + 1;
+            }
             break;
     }
 }
@@ -154,4 +170,11 @@ void Player::checkCollisions(){
         }
     }
     
+}
+
+// Reduces Pacman’s lives by 1 and resets Pacman to his original location
+void Player::die(){
+    this->health = this->health - 1;
+    Entity::x = xSpawnPosition;
+    Entity::y = ySpawnPosition;
 }
