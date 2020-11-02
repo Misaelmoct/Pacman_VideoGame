@@ -1,7 +1,8 @@
 #include "MenuState.h"
 
 MenuState::MenuState() {
-	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Start");
+	img1.load("images/startScreen.jpg");
+	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight(), "Start");
 }
 void MenuState::tick() {
 	startButton->tick();
@@ -12,8 +13,10 @@ void MenuState::tick() {
 	}
 }
 void MenuState::render() {
-	ofSetBackgroundColor(230, 230, 250);
-	startButton->render();
+	//ofSetBackgroundColor(230, 230, 250);
+	img1.draw(0, 0, ofGetWidth(), ofGetHeight());
+	//startButton->render();
+	
 }
 
 void MenuState::keyPressed(int key){
