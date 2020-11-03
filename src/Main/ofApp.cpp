@@ -3,6 +3,9 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+
+	introSound.load("INTRO_SOUND.mp3");
+
 	ofSetFrameRate(30);
 	ofSetWindowTitle("Java Game Box");
 	//States
@@ -19,13 +22,14 @@ void ofApp::update(){
 		if(currentState->hasFinished()){
 			if(currentState->getNextState() == "Menu"){
 				currentState = menuState;
+				introSound.play();
 			}else if(currentState->getNextState() == "Game"){
 				currentState = gameState;
+				introSound.play();
 			}
 			currentState->reset();
 		}
 	}
-		
 }
 
 //--------------------------------------------------------------

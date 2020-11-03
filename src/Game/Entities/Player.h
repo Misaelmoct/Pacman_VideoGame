@@ -43,4 +43,6 @@ class Player: public Entity{
         void die();
         int xSpawnPosition = Entity::x;
         int ySpawnPosition = Entity::y;
+        ofSoundPlayer dieSound;
+        ofSoundPlayer wakaSound;
 };
