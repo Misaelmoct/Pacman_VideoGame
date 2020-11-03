@@ -178,3 +178,9 @@ void Player::die(){
     Entity::x = xSpawnPosition;
     Entity::y = ySpawnPosition;
 }
+
+int Player:: getHealth(){
+    return this->health;
+}
+
+

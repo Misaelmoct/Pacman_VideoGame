@@ -12,6 +12,7 @@ class Map{
       void keyPressed(int key);
 		  void mousePressed(int x, int y, int button);
 		  void keyReleased(int key);
+      Player* getPlayer();
 
     private:
       EntityManager *entityManager;
