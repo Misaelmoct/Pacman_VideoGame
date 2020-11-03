@@ -2,6 +2,7 @@
 #include "EntityManager.h"
 #include "Dot.h"
 #include "BigDot.h"
+#include "Ghost.h"
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     sprite.load("images/pacman.png");
@@ -167,6 +168,16 @@ void Player::checkCollisions(){
             else if(dynamic_cast<BigDot*>(entity)){
                 this->score = this->score + 50;
             }
+        }
+    }
+    
+
+    for(Entity* entity:em->entities){
+        if(collides(entity)){
+            if(dynamic_cast<Ghost*>(entity)){
+                this->die();
+            }
+            
         }
     }
     
