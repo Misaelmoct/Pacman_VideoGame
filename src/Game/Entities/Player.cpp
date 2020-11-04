@@ -4,6 +4,8 @@
 #include "BigDot.h"
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
+    dieSound.load("DIE_SOUND.mp3");
+    wakaSound.load("WAKA_SOUND.mp3");
     sprite.load("images/pacman.png");
     down.cropFrom(sprite, 0, 48, 16, 16);
     up.cropFrom(sprite, 0, 32, 16, 16);
@@ -163,9 +165,11 @@ void Player::checkCollisions(){
         if(collides(entity)){
             if(dynamic_cast<Dot*>(entity)){
                 this->score = this->score + 10;
+                wakaSound.play();
             }
             else if(dynamic_cast<BigDot*>(entity)){
                 this->score = this->score + 50;
+                wakaSound.play();
             }
         }
     }
@@ -177,4 +181,5 @@ void Player::die(){
     this->health = this->health - 1;
     Entity::x = xSpawnPosition;
     Entity::y = ySpawnPosition;
+    dieSound.play();
 }
