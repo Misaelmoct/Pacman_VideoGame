@@ -2,6 +2,7 @@
 #include "EntityManager.h"
 #include "Dot.h"
 #include "BigDot.h"
+#include "Ghost.h"
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     dieSound.load("DIE_SOUND.mp3");
@@ -171,6 +172,16 @@ void Player::checkCollisions(){
                 this->score = this->score + 50;
                 wakaSound.play();
             }
+        }
+    }
+    
+
+    for(Entity* entity:em->entities){
+        if(collides(entity)){
+            if(dynamic_cast<Ghost*>(entity)){
+                this->die();
+            }
+            
         }
     }
     
