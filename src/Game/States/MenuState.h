@@ -2,6 +2,7 @@
 
 #include "State.h"
 #include "Button.h"
+#include "Particle.h"
 
 class MenuState : public State {
 private:
@@ -15,4 +16,9 @@ public:
 	void keyPressed(int key);
 	void mousePressed(int x, int y, int button);
 	void reset();
+	void resetParticles();
+
+	vector <Particle> p;
+	vector <glm::vec3> attractPoints;
+	vector <glm::vec3> attractPointsWithMovement;
 };
