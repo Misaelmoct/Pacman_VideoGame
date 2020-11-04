@@ -3,7 +3,7 @@
 
 GameOverState:: GameOverState(){
 
-    gameOverScreen.load("");
+    gameOverScreen.load("images/GameOverImg.jpg");
     restartButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Restart");
 }
 
@@ -16,8 +16,9 @@ restartButton->tick();
 	}
 }
 void GameOverState::render() {
-	ofSetBackgroundColor(230, 230, 250);
-	restartButton->render();
+	//ofSetBackgroundColor(230, 230, 250);
+	gameOverScreen.draw(0, 0, ofGetWidth(), ofGetHeight());
+	//restartButton->render();
 	
 }
 
