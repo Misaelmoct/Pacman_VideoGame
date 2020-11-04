@@ -37,3 +37,7 @@ void Map::setPlayer(Player* p){
     player = p;
 }
 
+Player* Map::getPlayer(){
+    return this->player;
+}
+

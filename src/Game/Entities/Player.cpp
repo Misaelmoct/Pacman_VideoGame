@@ -192,5 +192,15 @@ void Player::die(){
     this->health = this->health - 1;
     Entity::x = xSpawnPosition;
     Entity::y = ySpawnPosition;
+<<<<<<< HEAD
     dieSound.play();
 }
+=======
+}
+
+int Player:: getHealth(){
+    return this->health;
+}
+
+
+>>>>>>> Game-Over-Screen
