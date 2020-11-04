@@ -11,8 +11,7 @@ class GhostSpawner: public Entity{
 
     
     public:
-        GhostSpawner(int, int, int, int, ofImage);
-        ofImage sprite1;
+        GhostSpawner(int, int, int, int,EntityManager*, ofImage);
         vector <Ghost*> getGhostsVector();
         
 

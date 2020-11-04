@@ -2,13 +2,12 @@
 
 
 
-GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSheet): Entity(x, y, width, height){
+GhostSpawner::GhostSpawner(int x, int y, int width, int height,EntityManager* em, ofImage spriteSheet): Entity(x, y, width, height){
     
-    for ( int i = 0; i <= 48; i+=16){
+    for ( int i = 1; i <= 4; i++){
         
-        sprite1.cropFrom(spriteSheet, 456, 64 + i, 16, 16);
-        Ghost* g = new Ghost(x, y, width, height, sprite1);
-        ghosts.push_back(g);
+        Ghost* g = new Ghost(x, y, width, height, em, spriteSheet);
+        em->entities.push_back(g);
     }
 }
 
