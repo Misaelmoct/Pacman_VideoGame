@@ -39,6 +39,7 @@ class Ghost: public Entity{
         vector <GFACING> paths(BlockEntity* b);
         int xSpawnPoint = Entity::x;
         int ySpawnPoint = Entity::y;
+        void reset();
         
 };
 

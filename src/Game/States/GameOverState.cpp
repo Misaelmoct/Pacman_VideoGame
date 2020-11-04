@@ -4,7 +4,7 @@
 GameOverState:: GameOverState(){
 
     gameOverScreen.load("images/GameOverImg.jpg");
-    restartButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Restart");
+    restartButton = new Button(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight(), "Restart");
 }
 
 void GameOverState:: tick(){

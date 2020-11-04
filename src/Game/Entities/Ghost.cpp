@@ -59,7 +59,12 @@ Ghost::Ghost(int x, int y, int width, int height, EntityManager* em, ofImage spr
     walkUp = new Animation(1,upAnimframes);
     walkLeft = new Animation(1,leftAnimframes);
     walkRight = new Animation(1,rightAnimframes);
+}
 
+
+void Ghost:: reset(){
+    uniqSpeed = 0;
+    ghostCount = 0;
 }
 
 
