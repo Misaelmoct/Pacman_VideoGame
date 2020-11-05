@@ -5,6 +5,11 @@
 int Ghost:: ghostCount = 0;
 int Ghost:: uniqSpeed = 0;
 
+Ghost:: Ghost(int x, int y, int width, int height, EntityManager* em):Entity(x, y, width, height){
+this->em = em;
+ghostNo = ++ghostCount;
+
+}
 Ghost::Ghost(int x, int y, int width, int height, EntityManager* em, ofImage spriteSheet): Entity(x, y, width, height){
     this->em = em;
 
@@ -30,11 +35,10 @@ Ghost::Ghost(int x, int y, int width, int height, EntityManager* em, ofImage spr
         break;
     
     
-    default:
+    case 1:
         yPosImage = 64;
         break;
     }
-
         for(int i = 96 ; i <= 112; i+=16){
         temp.cropFrom(sprite,xPosImage + i, yPosImage, 16, 16);
         downAnimframes.push_back(temp);
@@ -59,6 +63,7 @@ Ghost::Ghost(int x, int y, int width, int height, EntityManager* em, ofImage spr
     walkUp = new Animation(1,upAnimframes);
     walkLeft = new Animation(1,leftAnimframes);
     walkRight = new Animation(1,rightAnimframes);
+
 }
 
 
@@ -100,6 +105,17 @@ void Ghost:: render(){
     }
 }
 
+void Ghost:: keyPressed(int key){
+    if(key == 'g'){
+    Ghost* g = new Ghost(xSpawnPoint, ySpawnPoint, width, height, em);
+    g->walkUp = this->walkUp;
+    g->walkDown = this->walkDown;
+    g->walkLeft = this->walkLeft;
+    g->walkRight = this->walkRight;
+    g->speed = this->speed;
+    em->entities.push_back(g);
+    }
+}
 
 void Ghost::checkCollisions(){
 
@@ -172,82 +188,12 @@ int Ghost:: getGhostNo(){
     return this->ghostNo;
 }
 
-/*void Ghost::checkCollisions(){
-
-    for(BlockEntity* block: em->blocks){
-        switch(facing){
-
-            case gUP:
-
-                if(this->getBounds(x, y-speed).intersects(block->getBounds())){
-                int j = round(ofRandom(0, (this->paths(block).size() - 1)));
-                setFacing((this->paths(block))[j]);
-                    
-                    //setFacing(gRIGHT);
-                    //this->checkCollisions();
-                }
-                break;
-            case gDOWN:
-
-                if(this->getBounds(x, y+speed).intersects(block->getBounds())){
-                int j = round(ofRandom(0, (this->paths(block).size() - 1)));
-                setFacing((this->paths(block))[j]);                    
-                    
-                    //setFacing(gLEFT);
-                    //this->checkCollisions();
-                }
-                break;
-            case gLEFT:
-
-               if(this->getBounds(x-speed, y).intersects(block->getBounds())){
-                int j = round(ofRandom(0, (this->paths(block).size() - 1)));
-                setFacing((this->paths(block))[j]);                    
-                    
-                    //setFacing(gDOWN);
-                    //this->checkCollisions();
-                }
-                break;
-            case gRIGHT:
-
-                if(this->getBounds(x+speed, y).intersects(block->getBounds())){
-                int j = round(ofRandom(0, (this->paths(block).size() - 1)));
-                setFacing((this->paths(block))[j]);                    
-                    
-                    //setFacing(gUP);
-                    //this->checkCollisions();
-                }
-                break;
-        }
-    }
+int Ghost:: getGhostCount(){
+    return ghostCount;
 }
-vector <GFACING> Ghost:: paths(BlockEntity* blocks){
-    bool up = this->getBounds(x, y-speed).intersects(blocks->getBounds());
-    bool down = this->getBounds(x, y+speed).intersects(blocks->getBounds());
-    bool left = this->getBounds(x-speed, y).intersects(blocks->getBounds());
-    bool right = this->getBounds(x+speed, y).intersects(blocks->getBounds());
-    vector <GFACING> paths;
 
-    if (up == false){ paths.push_back(gUP); }
-    if (down == false){ paths.push_back(gDOWN); }
-    if (left == false){ paths.push_back(gLEFT); }
-    if (right == false){ paths.push_back(gRIGHT); }
-    
-    return paths;
-
-    /*if (up && down && left){
-        setFacing(gRight);
-    }
-    else if (up && down && right){
-        setFacing(gLeft);
-    }
-    else if (down && left && right){
-        setFacing(gUP);
-    }
-    else if (up && left && right){
-        setFacing(gDOWN);
-    }
-    else if(up && down)
-}*/
-
+void Ghost:: setGhostCount(int c){
+    ghostCount = c;
+}
 
 

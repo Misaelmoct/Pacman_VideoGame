@@ -28,10 +28,12 @@ class Ghost: public Entity{
 
     public:
         Ghost(int, int, int, int,EntityManager*, ofImage);
+        Ghost(int, int, int, int, EntityManager*);
         void die();
         void setFacing(GFACING facing);
         int getGhostNo();
-        //static int getGhostCount();
+        static int getGhostCount();
+        static void setGhostCount(int);
         void checkCollisions();
         void tick();
         void render();
@@ -40,9 +42,7 @@ class Ghost: public Entity{
         int xSpawnPoint = Entity::x;
         int ySpawnPoint = Entity::y;
         void reset();
+        void keyPressed(int);
         
 };
 
-/*static int Ghost:: getGhostCount(){
-    return ghostCount;
-}*/

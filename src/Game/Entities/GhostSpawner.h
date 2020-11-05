@@ -2,7 +2,6 @@
 #include "Entity.h"
 #include "Ghost.h"
 #include <vector>
-#include "Map.h"
 
 
 class GhostSpawner: public Entity{

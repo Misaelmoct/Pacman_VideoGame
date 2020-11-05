@@ -18,6 +18,8 @@ void Map::render(){
 
 void Map::keyPressed(int key){
 	player->keyPressed(key);
+	int a = round(ofRandom(0, 3));
+	spawn->getGhostsVector()[a]->keyPressed(key);
 }
 
 void Map::mousePressed(int x, int y, int button){
@@ -41,3 +43,10 @@ Player* Map::getPlayer(){
     return this->player;
 }
 
+void Map::setSpawn(GhostSpawner* s){
+	this->spawn = s;
+}
+
+GhostSpawner* Map:: getSpawn(){
+	return this->spawn;
+}

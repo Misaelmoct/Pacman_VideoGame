@@ -9,6 +9,7 @@ GhostSpawner::GhostSpawner(int x, int y, int width, int height,EntityManager* em
         
         g = new Ghost(x, y, width, height, em, spriteSheet);
         em->entities.push_back(g);
+        ghosts.push_back(g);
     }
 }
 
@@ -16,10 +17,5 @@ vector <Ghost*> GhostSpawner:: getGhostsVector(){
 
     return ghosts;
 }
-/*ofImage ghostSpriteGenerator(ofImage imgGhost){
-        
-        for(int i = 0; i < 48; i + 16 ){
-        sprite.cropFrom(imgGhost, 456, 64 + i, 16, 16)
-    }*/
 
 
