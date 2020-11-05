@@ -13,6 +13,8 @@ class GameState: public State{
 		void keyPressed(int key);
 		void mousePressed(int x, int y, int button);
 		void keyReleased(int key);
+		static Map* mapCopy;
+		static Map* getMap();
 	
 	private:
 		ofImage mapImage;

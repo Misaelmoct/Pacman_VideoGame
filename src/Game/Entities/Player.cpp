@@ -5,6 +5,7 @@
 #include "Ghost.h"
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
+    retroGaming.load("Retro_Gaming.ttf",18);
     dieSound.load("DIE_SOUND.mp3");
     wakaSound.load("WAKA_SOUND.mp3");
     sprite.load("images/pacman.png");
@@ -77,12 +78,12 @@ void Player::render(){
 
     // Displays the score on screen throughout the game
     if(this->score >= 0){
-        ofDrawBitmapString("Score = " + to_string(this->score), 300 , 50);
+        retroGaming.drawString("SCORE: " + to_string(this->score), 300 , 50);
     }
 
     // Displays the lives Pacman has on screen throughout the game
     if(this->health <= 3){
-        ofDrawBitmapString("Lives = " + to_string(this->health), 650 , 50);
+    retroGaming.drawString("LIVES: " + to_string(this->health), 650 , 50);
     }
 }
 
@@ -198,4 +199,8 @@ void Player::die(){
 
 int Player:: getHealth(){
     return this->health;
+}
+
+int Player::getScore(){
+    return this->score;
 }

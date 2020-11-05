@@ -1,8 +1,9 @@
 #include "MenuState.h"
 
 MenuState::MenuState() {
+	retroGaming.load("Retro_Gaming.ttf",32);
 	img1.load("images/GhostSanta.jpg");
-	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight(), "Start");
+	startButton = new Button(0, 0, ofGetWidth(), ofGetHeight(), "Start");
 	
 	int num = 1500;
 	p.assign(num, Particle());
@@ -51,7 +52,7 @@ void MenuState::tick() {
 void MenuState::render() {
 	ofSetBackgroundColor(0, 0, 0);
 	img1.draw(ofGetWidth()/2 - 275, ofGetHeight()/2 - 154.5, 550, 309);
-	ofDrawBitmapString("Press to Start",ofGetWidth()/2, ofGetHeight()/2 );
+	retroGaming.drawString("PRESS TO START", ofGetWidth()*1/3.2, ofGetHeight()*3/4);
 	//startButton->render();
 
 

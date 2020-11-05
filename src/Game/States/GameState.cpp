@@ -1,9 +1,11 @@
 #include "GameState.h"
 #include "Entity.h"
+Map* GameState::mapCopy = NULL;
 
 GameState::GameState() {
 	mapImage.load("images/map1.png");
 	map = MapBuilder().createMap(mapImage);
+	
 }
 void GameState::tick() {
 
@@ -13,6 +15,7 @@ void GameState::tick() {
 	setFinished(true);
 	}
 	map->tick();
+	mapCopy = map;
 }
 void GameState::render() {
 	map->render();
@@ -34,4 +37,7 @@ void GameState::keyReleased(int key){
 void GameState::reset(){
 	setFinished(false);
 	setNextState("");
+}
+Map* GameState::getMap(){
+	return mapCopy;
 }

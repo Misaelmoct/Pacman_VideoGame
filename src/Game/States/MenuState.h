@@ -21,4 +21,5 @@ public:
 	vector <Particle> p;
 	vector <glm::vec3> attractPoints;
 	vector <glm::vec3> attractPointsWithMovement;
+	ofTrueTypeFont retroGaming;
 };

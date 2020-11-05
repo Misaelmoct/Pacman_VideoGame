@@ -45,4 +45,5 @@ class Player: public Entity{
         int ySpawnPosition = Entity::y;
         ofSoundPlayer dieSound;
         ofSoundPlayer wakaSound;
+        ofTrueTypeFont retroGaming;
 };
