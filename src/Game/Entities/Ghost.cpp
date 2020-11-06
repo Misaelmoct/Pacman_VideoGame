@@ -7,6 +7,7 @@ int Ghost:: uniqSpeed = 0;
 
 Ghost:: Ghost(int x, int y, int width, int height, EntityManager* em):Entity(x, y, width, height){
 ghostSpawned.load("GHOST_SPAWN.mp3");
+ofSoundStopAll();
 ghostSpawned.play();
 this->em = em;
 ghostNo = ++ghostCount;
