@@ -172,17 +172,35 @@ void Player::checkCollisions(){
             else if(dynamic_cast<BigDot*>(entity)){
                 this->score = this->score + 50;
                 wakaSound.play();
+                ghostIsWeak = true;
             }
         }
     }
-    
 
-    for(Entity* entity:em->entities){
-        if(collides(entity)){
-            if(dynamic_cast<Ghost*>(entity)){
-                this->die();
+    // Lets Pacman eat Ghosts
+    if(ghostIsWeak == true){
+        for(Entity* entity:em->entities){
+            if(collides(entity)){
+                if(dynamic_cast<Ghost*>(entity)){
+                    entity->remove = true;
+                }
             }
-            
+        }
+        deathCounter++;
+        if(deathCounter >= frameRate*5){
+            deathCounter = 0;
+            ghostIsWeak = false;
+        }
+    }
+    
+    // Lets Ghosts kill Pacman
+    if(ghostIsWeak == false){
+        for(Entity* entity:em->entities){
+            if(collides(entity)){
+                if(dynamic_cast<Ghost*>(entity)){
+                    this->die();
+                }
+            }
         }
     }
     
