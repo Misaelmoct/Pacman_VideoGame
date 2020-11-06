@@ -31,5 +31,6 @@ public:
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		ofSoundPlayer introSound;
+		ofSoundPlayer gameIntro2;
 		
 };

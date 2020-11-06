@@ -43,6 +43,7 @@ class Ghost: public Entity{
         int ySpawnPoint = Entity::y;
         void reset();
         void keyPressed(int);
+        ofSoundPlayer ghostSpawned;
         
 };
 

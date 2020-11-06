@@ -5,6 +5,7 @@
 void ofApp::setup(){
 
 	introSound.load("INTRO_SOUND.mp3");
+	gameIntro2.load("PACMAN_READY.wav");
 
 	ofSetFrameRate(30);
 	ofSetWindowTitle("Java Game Box");
@@ -14,6 +15,8 @@ void ofApp::setup(){
 	gameOverState = new GameOverState();
 	// Initial State
 	currentState = menuState;
+	introSound.setLoop(true);
+	introSound.play();
 }
 
 //--------------------------------------------------------------
@@ -23,10 +26,12 @@ void ofApp::update(){
 		if(currentState->hasFinished()){
 			if(currentState->getNextState() == "Menu"){
 				currentState = menuState;
-				introSound.play();
+				
 			}else if(currentState->getNextState() == "Game"){
 				currentState = gameState;
-				introSound.play();
+				introSound.stop();
+				gameIntro2.play();
+				
 			}
 			else if(currentState->getNextState() == "GameOverState"){
 				gameState = new GameState();
