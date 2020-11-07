@@ -7,7 +7,8 @@ enum GFACING {
     gUP,
     gDOWN,
     gLEFT,
-    gRIGHT
+    gRIGHT,
+    gFLASH,
 };
 class Ghost: public Entity{
     private:
@@ -22,6 +23,7 @@ class Ghost: public Entity{
     Animation *walkDown;
     Animation *walkLeft;
     Animation *walkRight;
+    Animation *flashWalk;
     EntityManager* em;
     bool canMove;
 

@@ -1,9 +1,11 @@
 #include "Ghost.h"
 #include <vector>
 #include "EntityManager.h"
+#include "Player.h"
 
 int Ghost:: ghostCount = 0;
 int Ghost:: uniqSpeed = 0;
+bool Player:: ghostIsWeak = false;
 
 Ghost:: Ghost(int x, int y, int width, int height, EntityManager* em):Entity(x, y, width, height){
 ghostSpawned.load("GHOST_SPAWN.mp3");
@@ -23,6 +25,7 @@ Ghost::Ghost(int x, int y, int width, int height, EntityManager* em, ofImage spr
     vector<ofImage> upAnimframes;
     vector<ofImage> leftAnimframes;
     vector<ofImage> rightAnimframes;
+    vector<ofImage> flashAnimframes;
     int xPosImage = 456;
     int yPosImage;
     ofImage temp;
@@ -62,10 +65,16 @@ Ghost::Ghost(int x, int y, int width, int height, EntityManager* em, ofImage spr
         rightAnimframes.push_back(temp);
     }
 
+        for(int i = 128 ; i <= 176; i+=16){
+        temp.cropFrom(sprite,xPosImage + i, 64, 16, 16);
+        flashAnimframes.push_back(temp);
+    }
+
     walkDown = new Animation(1,downAnimframes);
     walkUp = new Animation(1,upAnimframes);
     walkLeft = new Animation(1,leftAnimframes);
     walkRight = new Animation(1,rightAnimframes);
+    flashWalk = new Animation(2,flashAnimframes);
 
 }
 
@@ -91,12 +100,16 @@ void Ghost:: tick(){
             x+=speed;
             walkRight->tick();
         }
+        if(Player::ghostIsWeak == true){
+            flashWalk->tick();
+        }
 
 }
 
 void Ghost:: render(){
     ofSetColor(256,256,256);
-    if(facing == gUP){
+    if(Player::ghostIsWeak == false){
+        if(facing == gUP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
         
     }else if(facing == gDOWN){
@@ -105,6 +118,12 @@ void Ghost:: render(){
         walkLeft->getCurrentFrame().draw(x, y, width, height);
     }else if(facing == gRIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
+    }else if(facing == gFLASH){
+        flashWalk->getCurrentFrame().draw(x, y, width, height);
+    }
+    }
+    else{
+        flashWalk->getCurrentFrame().draw(x, y, width, height);
     }
 }
 
@@ -115,6 +134,7 @@ void Ghost:: keyPressed(int key){
     g->walkDown = this->walkDown;
     g->walkLeft = this->walkLeft;
     g->walkRight = this->walkRight;
+    g->flashWalk = this->flashWalk;
     g->speed = this->speed;
     em->entities.push_back(g);
     }

@@ -4,6 +4,8 @@
 #include "BigDot.h"
 #include "Ghost.h"
 
+bool Player::ghostIsWeak = false;
+
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     retroGaming.load("Retro_Gaming.ttf",18);
     dieSound.load("DIE_SOUND.mp3");

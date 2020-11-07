@@ -46,7 +46,7 @@ class Player: public Entity{
         ofSoundPlayer dieSound;
         ofSoundPlayer wakaSound;
         ofTrueTypeFont retroGaming;
-        bool ghostIsWeak = false;
+        static bool ghostIsWeak;
         int frameRate = 30;
         int deathCounter = 0;
 };
