@@ -46,6 +46,8 @@ class Ghost: public Entity{
         void reset();
         void keyPressed(int);
         ofSoundPlayer ghostSpawned;
+        int counterSpawn = 0;
+        bool spawn = false;
         
 };
 
