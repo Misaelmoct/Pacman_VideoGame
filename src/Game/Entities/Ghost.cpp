@@ -5,7 +5,6 @@
 
 int Ghost:: ghostCount = 0;
 int Ghost:: uniqSpeed = 0;
-bool Player:: ghostIsWeak = false;
 
 Ghost:: Ghost(int x, int y, int width, int height, EntityManager* em):Entity(x, y, width, height){
 ghostSpawned.load("GHOST_SPAWN.mp3");
