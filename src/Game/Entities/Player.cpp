@@ -3,6 +3,7 @@
 #include "Dot.h"
 #include "BigDot.h"
 #include "Ghost.h"
+#include "GhostSpawner.h"
 
 bool Player::ghostIsWeak = false;
 
@@ -185,6 +186,12 @@ void Player::checkCollisions(){
             if(collides(entity)){
                 if(dynamic_cast<Ghost*>(entity)){
                     entity->remove = true;
+                    for(Entity* entity2:em->entities){
+                        if(dynamic_cast<GhostSpawner*>(entity2)){
+                            int a = round(ofRandom(0,3));
+                            dynamic_cast<GhostSpawner*>(entity2)->getGhostsVector()[a]->spawn = true;
+                        }
+                    }
                 }
             }
         }

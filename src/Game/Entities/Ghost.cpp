@@ -102,7 +102,14 @@ void Ghost:: tick(){
         if(Player::ghostIsWeak == true){
             flashWalk->tick();
         }
-
+    if(spawn){
+        counterSpawn++;
+        if(counterSpawn > 150){
+            counterSpawn = 0;
+            keyPressed('g');
+            spawn = false;
+        }
+    }
 }
 
 void Ghost:: render(){
