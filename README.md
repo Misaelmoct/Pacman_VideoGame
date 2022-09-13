@@ -34,6 +34,7 @@ course Advance Programming or also known as Object Oriented Programming course. 
 
 > ## Game 
 > For moving Up: w, Down: s, Left: a, Right: d  
+> Spawning new ghost: g
 
 
 ![image](https://user-images.githubusercontent.com/70610617/189960819-dc2c691b-5a64-4994-923b-3147a49ae528.png)
