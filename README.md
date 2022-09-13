@@ -27,12 +27,20 @@ course Advance Programming or also known as Object Oriented Programming course. 
 
 > ## Start Menu
 
+![image](https://user-images.githubusercontent.com/70610617/189960905-375e9209-dbfa-4c15-a371-5254b9418502.png)
+
 <br>  
 <br>  
 
 > ## Game 
+> For moving Up: w, Down: s, Left: a, Right: d  
+
+
+![image](https://user-images.githubusercontent.com/70610617/189960819-dc2c691b-5a64-4994-923b-3147a49ae528.png)
 
 <br>  
 <br>  
 
 > ## Game Over
+
+![image](https://user-images.githubusercontent.com/70610617/189960646-84a09a7a-cb32-4502-b8ef-90ea37be611d.png)
